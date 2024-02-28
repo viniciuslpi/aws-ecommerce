@@ -13,7 +13,9 @@ interface EcommerceApiStackProxy extends cdk.StackProps {
 export class EcommerceApiStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props: EcommerceApiStackProxy) {
         super(scope, id, props)
-
+        
+        cloudWatchRole: true
+        
         const logGroup = new cwlogs.LogGroup(this, 'EcommerceApiLogs')
         const api = new apigateway.RestApi(this, 'EcommerceApi', {
             restApiName: 'EcommerceApi',
@@ -28,14 +30,13 @@ export class EcommerceApiStack extends cdk.Stack {
                     responseLength: true,
                     status: true,
                     caller: true,
-                    user: true
-                })
-            }
+                    user: true,
+                }),
+            },
+            cloudWatchRole: true,
         })
 
         // criação de logs no cloudwatch
-
-
         const productsFetchIntegration = new apigateway.LambdaIntegration(props.productsFetchHandler)
         
         // /products

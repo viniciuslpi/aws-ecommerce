@@ -15,7 +15,9 @@ export async function handler(event: APIGatewayProxyEvent, context: Context): Pr
 
             return {
                 statusCode: 200,
-                body: 'GET Products = OK'
+                body: JSON.stringify({
+                    message: 'GET Products - OK'
+                })
             }
         }
     }
