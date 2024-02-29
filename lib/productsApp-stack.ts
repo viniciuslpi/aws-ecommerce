@@ -3,9 +3,13 @@ import * as lambdaNodejs from 'aws-cdk-lib/aws-lambda-nodejs'
 import * as cdk from 'aws-cdk-lib'
 
 import { Construct } from 'constructs'
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb'
+
 
 export class ProductAppStack extends cdk.Stack {
     readonly productsFetchHandler: lambdaNodejs.NodejsFunction
+    readonly productsDdb: dynamodb.Table
+
 
     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props)
