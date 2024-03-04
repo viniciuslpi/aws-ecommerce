@@ -24,6 +24,7 @@ const productAppStack = new ProductAppStack(app, 'ProductApp', {
 
 const ecommerceApiStack = new EcommerceApiStack(app, 'EcommerceApi', {
   productsFetchHandler: productAppStack.productsFetchHandler,
+  productsAdminHandler: productAppStack.productsAdminHandler,
   tags,
   env,
 })
